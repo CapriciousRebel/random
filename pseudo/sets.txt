@@ -1,0 +1,30 @@
+function add(v, item)
+    N = v.length                // The length of the list v is N.
+    for (i = 1) to (i = N)      // Run a for-loop where i goes from 1 to N (This represents every item in the list v)
+        if v[i] equals item     
+            return v            // If the item to be added already exists in the list, return the original list,
+                                   since sets cannot have duplicate items.
+        v = v + item            // If no match is found anywhere in the list, then add the item to the list 
+        return v                // finally return the updated list
+
+
+function union(v, w)
+    N = v.length                // The length of the list v is N.
+    M = w.length                // The length of the list w is M.
+
+    for (i = 1) to (i = N)      // Run a for-loop where i goes from 1 to N (This represents every item in the list v)
+        canAdd = True           // Use a boolean variable to check if the element can be added to the union, 
+                                   Set canAdd equal to True initially, for every element of set v
+        for (j = 1) to (j = M)  // Run a for-loop where j goes from 1 to M (This represents every item in the list w)
+            
+            if v[i] equals w[j] 
+            canAdd = False      // if the element v[i] is already present in the list "w" 
+                                   then it cannot be added into union, so set canAdd to False
+            break               // break the inner for-loop here, since no more matches can be found
+        
+        if canAdd is True
+            w = w + v[i]        // If canAdd is True, it means that the element v[i] is not present in w,
+                                   and hence it must be added to w.
+    
+    return w                    // finally, the set w becomes the union of v and w, so we return it
+

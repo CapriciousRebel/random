@@ -1,0 +1,122 @@
+Greedy Algorithm
+
+(tasks.py and tasks_min.py)
+
+For this lab, we will revisit opening and reading from a file, do some cool stuff with lists and tuples,
+and learn a little more about translating pseudocode into working code.
+
+First, what is a ”greedy” algorithm?
+A greedy algorithm is an algorithm that makes the best choice available at the time, given the data it has seen.
+Many problems can be solved using greedy algorithms — they are an essential part of the programmer’s toolkit.
+
+Now on to the problem at hand.
+
+Your friend Pat has trouble with time management when it comes to household chores.
+You will use a greedy algorithm to help Pat schedule these tasks.
+
+Start with the data file supplied, tasks.txt.
+This is the list of household chores Pat has to do and the time it takes to complete each task.
+Data in this file are in the form: description, time required.
+For example:
+
+clean bedroom, 12
+vacuum rugs, 27
+water plants, 8
+take out trash, 3
+take out recycling, 4
+wash dishes, 19
+
+
+Begin by reading this file into a list. Each element of the list should be a stored as a tuple.
+You’ve worked with readline() in a previous lab, so this should be familiar.
+When you get a line, you can split the line using the string split() method.
+Here’s how split() works: you specify a delimiter(in this case, a comma) and
+split() will split the string into pieces wherever it finds the delimiter.
+
+>> > line = "wash dishes,19" >> > line.split(",")['wash dishes', '19']
+Notice that the result of split() is a list of strings. Make sure you convert time to an int.
+After reading through the data file, you should have a structure like this:
+
+1
+
+[("clean bedroom", 12), ("vacuum rugs", 27), ("take out trash", 3), 
+("take out recycling", 4),
+ ...]
+
+Your program should also prompt for an integer time value, in minutes.
+This will be the time Pat has to do chores.
+
+Now here’s where we apply the greedy algorithm. We will use the greedy approach to
+schedule a set of tasks that can be completed in the allotted time.
+
+Iterate through this list and choose the first task you 
+find that fits in whatever time is remaining.
+
+When you’ve selected a task to be performed,
+append the description to a list of tasks to be performed,
+deduct the time from time remaining,
+and delete the task from the source list.
+Do this until you can add no more tasks.
+Print the list of tasks for Pat to perform.
+Save this program as tasks.py.
+
+Here’s some pseudocode to get you started(or come up with your own solution).
+Note that in pseudocode, the assignment operator is usually written as ←, and
+the comparison operator (== in Python) is usually written as a single equals 
+sign(=). Also note that pseudocode is not code: it could be implemented in any 
+programming language.
+
+2
+
+Algorithm 1: Assign tasks
+
+
+def get_next_task(tasks, time_remaining):
+
+    for task in tasks:
+        if tasks.time_required <= time_remaining:
+            return index(task)
+    return -1
+
+
+def make_schedule(tasks, t):
+
+    to_do = []
+    time_remaining = t
+    done = False
+    while time_remaining and not done:
+
+        next_task_index = get_next_task(tasks, time_remaining)
+        if next_task_index >= 0:
+            Append indexed task to the to_do list
+            Deduct time for task from time_remaining
+            Delete task from source task list(using index)
+
+        else:
+            done = True
+
+    return to_do
+
+
+▷ empty list
+
+Ask yourself: Does this algorithm produce a useful list?
+Why or why not?
+Explain why this kind of algorithm is called ”greedy.”
+Discuss this with your pair programming partner.
+
+Now create tasks_min.py.
+Modify tasks.py so that when you iterate through the list
+you scan the entire list and
+choose the available task that takes the least amount of time.
+Hint: Focus your attention on the get_next_task function.
+Print the list of tasks for Pat to perform.
+
+How is this result different from the previous result?
+Do you schedule more or fewer tasks this way?
+Will this method schedule the maximum number of tasks that
+can be fitted into the allotted time?
+Why or why not?
+Are there conditions under which both lists would have the 
+same items?
+What are those conditions?

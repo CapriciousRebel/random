@@ -1,0 +1,6 @@
+clean bedroom, 12
+vacuum rugs, 27
+water plants, 8
+take out trash, 3
+take out recycling, 4
+wash dishes, 19
